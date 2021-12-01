@@ -1,0 +1,25 @@
+﻿@page "/prikaz"
+@inject HttpClient HC
+
+<h3>Prikaz</h3>
+<ol>
+    @foreach(Osoba o in Osobe)
+    {
+        <li>@o.Ime @o.Prezime</li>
+    }
+</ol>
+
+
+@code 
+{
+    public List<Osoba> Osobe{ get; set; } = new();
+
+    protected async override Task OnInitializedAsync()
+    {
+        Osobe = await HC.GetFromJsonAsync<List<Osoba>>("osoba");
+        StateHasChanged();
+    }
+
+    
+
+}

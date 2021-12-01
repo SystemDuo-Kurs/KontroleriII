@@ -1,0 +1,13 @@
+﻿@page "/"
+@inject HttpClient HC
+
+<button @onclick=Foo class="nesto-moje">Teeest</button>
+
+@code
+{
+    public void Foo()
+    {
+        HC.PostAsJsonAsync("Osoba",
+            new Osoba { Ime = "Pera", Prezime = "Peric" });
+    }
+}
